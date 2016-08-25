@@ -1,0 +1,37 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+
+<div class="container u-cf">
+	<div class="row">
+            <div class="twelve columns">
+                <p class="footnote">
+                    <time class="">{{ .Date.Format "2006-01-02" }}</time>
+		            {{ $baseurl := .Site.BaseURL }}
+                    {{ if or .Params.tags .Params.categories .Params.series }}
+                    |
+                    {{ end }}
+                    {{ if isset .Params "tags" }}
+                    tags:{{ range .Params.tags }}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}
+                    {{ end }}
+
+                    {{ if isset .Params "categories" }}
+                    categories:{{ range .Params.categories }}<a href="{{ $baseurl }}categories/{{ . | urlize }}">{{ . }}</a> {{ end }}
+                    {{ end }}
+
+                    {{ if isset .Params "series" }}
+                    series:{{ range .Params.series }}<a href="{{ $baseurl }}series/{{ . | urlize }}">{{ . }}</a> {{ end }}
+                    {{ end }}
+                </p>
+                <h3>{{ .Title }}</h3>
+            </div>
+			</div>
+			<div class="row">
+            <div class="twelve columns">
+                {{ .Content }}
+            </div>
+			</div>
+	</div>
+</div>
+ 
+
+{{ partial "footer.html" . }}

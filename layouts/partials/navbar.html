@@ -1,0 +1,23 @@
+{{ $baseurl := .Site.BaseURL }}
+
+<h3><a href={{ $baseurl }} style="text-decoration: none;">{{ .Site.Title }}</a></h3>
+
+
+
+<div class="container">
+	<div class="row">
+		
+		<div class="twelve columns">
+		<ul class="u-pull-right">
+			{{ range $name,$page := .Site.Taxonomies.categories }}
+			<li style="display: inline">
+				<a href="{{ $baseurl }}categories/{{ $name | urlize }}" class="pure-menu-link">{{ $name | title }}</a>
+			</li>
+			{{ end }}
+			<li style="display: inline">
+				<a href="{{ $baseurl }}about/">About</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+</div>

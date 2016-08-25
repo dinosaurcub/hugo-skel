@@ -1,0 +1,47 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+<div class="container">
+	<div class="row">
+		<div class="nine columns">
+			<h3>Recent Posts:</h3>
+		</div>
+				</div>
+				{{ $baseurl := .Site.BaseURL }}
+				{{ range $name, $page := .Site.Pages }}
+				{{ if eq .Type "post" }}
+				<div class="row">
+				
+				<div class="four columns">
+				  <a href="{{ .Permalink }}">{{ $page.Title }}</a>
+				</div>
+				
+				<div class="eight columns">
+					submitted {{ $page.Date.Format "2006-01-02 15:04:05" }}
+
+					{{ if or $page.Params.tags $page.Params.categories $page.Params.series }}
+					to
+					{{ end }}
+
+					{{ with $page.Params.tags }}
+					tags:[ {{ range $page.Params.tags}}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}]
+					{{ end }}
+
+					{{ with $page.Params.categories }}
+					categories:[ {{ range $page.Params.categories }}<a href="{{ $baseurl }}categories/{{ . | urlize }}">{{ . }}</a> {{ end }}]
+					{{ end }}
+
+					{{ with $page.Params.series }}
+					series:[ {{ range $page.Params.series }}<a href="{{ $baseurl }}series/{{ . | urlize }}">{{ . }}</a> {{ end }}]
+					{{ end }}
+				</div>
+				</div>
+				  
+
+				{{ end }}
+				{{ end }}
+				
+
+	</div>
+</div>
+		
+{{ partial "footer.html" . }}

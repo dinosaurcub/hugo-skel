@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="utf-8">
+  <title>About</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/skeleton.css">
+
+
+  <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}images/favicon.png">
+
+</head>
+
+<body>
+{{ partial "navbar.html" . }}
+
+<div class="container">
+	{{ $baseurl := .Site.BaseURL }}
+	{{ range $name, $page := .Data.Pages }}
+	{{ if eq .Type "about" }}
+	<div class="row">
+	
+		<div class="twelve columns">
+		  <h3>{{ $page.Title }}</h3>
+		  {{ $page.Content }}
+		</div>
+	
+	</div>
+	  
+
+	{{ end }}
+	{{ end }}
+				
+
+	</div>
+</div>
+
+{{ partial "footer.html" . }}

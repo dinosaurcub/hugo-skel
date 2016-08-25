@@ -1,0 +1,12 @@
+name = "Skel"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+description = ""
+homepage = "https://github.com/dinosaurcub/hugo-skel"
+tags = ["minimal", "skeleton"]
+features = ["", ""]
+min_version = 0.15
+
+[author]
+  name = "Doug McNish"
+  homepage = "https://dinosaurcub.github.io"
